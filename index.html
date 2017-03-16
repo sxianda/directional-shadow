@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="scripts/directional-shadow.css">
+    <link type="text/css" rel="stylesheet" href="paper-card.css">
+    <script src="scripts/directional-shadow.js"></script>
+    <script src="scripts/directional-shadow-animation.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        initializeDirectionalShadow(document.querySelector('body'));
+      });
+    </script>
+  </head>
+  <body>
+    <div id="first-row">
+      <div class="container">
+        <div class="shadow-collection">
+          <div class="perspective">
+            <div id="square1" class="directional-shadow square" shadow-x="20" shadow-y="30" shadow-depth="600px" rotation="0" onclick="rotateY180(this, 600);" onmouseleave="rotateY0(this, 600);">
+              <figure class="front">front</figure>
+              <figure class="back">This is the content.</figure>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

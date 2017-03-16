@@ -1,0 +1,96 @@
+.square {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  width: 250px;
+  height: 250px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.circle {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.circle div {
+  // overflow: hidden;
+  border-radius: 125px;
+}
+
+.circle figure {
+  overflow: hidden;
+  border-radius: 125px;
+  text-align: center;
+}
+
+.container {
+  position: absolute;
+}
+
+figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+button {
+  display: block;
+  width: 50px;
+  height: 20px;
+}
+
+.bigger {
+  width: 400px;
+  height: 300px;
+  transform: translateZ(200px);
+  -webkit-transform: translateZ(200px);
+}
+
+.front {
+  background-color: lightgrey;
+  height: 100%;
+  width: 100%;
+}
+
+.back {
+  background-color: white;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  height: 100%;
+  width: 100%;
+}
+
+.perspective {
+  position: absolute;
+  top: 120px;
+  width: 500px;
+  height: 1000px;
+  -webkit-perspective: 1000px;
+  -webkit-perspective-origin: 250px 500px;
+  will-change: transform;
+}
+
+.shadow-collection {
+  position: absolute;
+}
+
+div {
+  position: absolute;
+}
+
+body {
+  background-color: #DCDCDC;
+}
