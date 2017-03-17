@@ -50,3 +50,27 @@
   50% { opacity: 0.9; animation-timing-function: cubic-bezier(0.24, 0.02, 0.32, 0.98); }
   100% { opacity: 0.0001; animation-timing-function: cubic-bezier(0, 1.024, 1, 1); }
 }
+
+@keyframes ssmooth-0-to-180-transform-shadow {
+  0% { opacity: 0.9; animation-timing-function: cubic-bezier(0.587, 0.718, 0.77, 0.995); }
+  18% { opacity: 0.0001; animation-timing-function: cubic-bezier(0.145, -0.004, 0.12, 0.91); }
+  100% { opacity: 0.9; animation-timing-function: cubic-bezier(0, 1.024, 1, 1); }
+}
+
+@keyframes ssmooth-0-to-180-transform-shadow-gradient {
+  0% { opacity: 0.0001; animation-timing-function: cubic-bezier(0.587, 0.718, 0.77, 0.995); }
+  18% { opacity: 0.9; animation-timing-function: cubic-bezier(0.145, -0.004, 0.12, 0.91); }
+  100% { opacity: 0.0001; animation-timing-function: cubic-bezier(0, 1.024, 1, 1); }
+}
+
+@keyframes ssmooth-180-to-0-transform-shadow {
+  0% { opacity: 0.9; animation-timing-function: cubic-bezier(0.587, 0.718, 0.77, 0.995); }
+  18% { opacity: 0.0001; animation-timing-function: cubic-bezier(0.145, -0.004, 0.12, 0.91); }
+  100% { opacity: 0.9; animation-timing-function: cubic-bezier(0, 1.024, 1, 1); }
+}
+
+@keyframes ssmooth-180-to-0-transform-shadow-gradient {
+  0% { opacity: 0.0001; animation-timing-function: cubic-bezier(0.587, 0.718, 0.77, 0.995); }
+  18% { opacity: 0.9; animation-timing-function: cubic-bezier(0.145, -0.004, 0.12, 0.91); }
+  100% { opacity: 0.0001; animation-timing-function: cubic-bezier(0, 1.024, 1, 1); }
+}
