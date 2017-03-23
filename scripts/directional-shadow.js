@@ -3,8 +3,9 @@ function initializeDirectionalShadow(clip) {
 
   for (var i = 0; i < cards.length; i++) {
     var card = cards[i];
+    card.shadowId = i;
     var zDistance = window.getComputedStyle(card).getPropertyValue("transform-origin").split(" ")[0];
-    card.style.transform = "translateZ(" + zDistance + ")";
+    card.style.transform = "translateZ(" + zDistance + ")" + " rotateY(0.1deg) rotateX(0.1deg)";
 
     var cardClass = card.className;
     cardClass = cardClass.replace(/\bdirectional-shadow\b/, '');
