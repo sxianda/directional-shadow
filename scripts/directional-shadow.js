@@ -13,6 +13,7 @@ function initializeDirectionalShadow(clip) {
     var shadowX = card.getAttribute('shadow-x');
     var shadowY = card.getAttribute('shadow-y');
     var shadowDepth = card.getAttribute('shadow-depth');
+    var rotationSuffix = card.getAttribute('shadow-rotate-direction');
 
     var shadowCollection = card.parentElement.parentElement;
 
@@ -43,7 +44,7 @@ function initializeDirectionalShadow(clip) {
     shadowCardGradient.className="shadow-card-gradient" + cardClass;
 
     var shadowGradient = document.createElement("div");
-    shadowGradient.className="shadow-gradient";
+    shadowGradient.className="shadow-gradient-" + rotationSuffix;
     shadowGradient.style.width = (card.offsetWidth - 10) + "px";
     shadowGradient.style.height = (card.offsetHeight - 10) + "px";
 

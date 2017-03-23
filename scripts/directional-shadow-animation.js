@@ -5,7 +5,7 @@ function opacityAnimationShadow(card, from, to) {
   var keyframes = "@keyframes smooth-" + card.shadowId + "-shadow {";
   for (var i = 0; i < frames.length; i++) {
     var angle = from + (to - from) * frames[i];
-    var opacity = 1.0 - (Math.abs(Math.sin(angle / 180 * Math.PI)) * 0.8 + 0.0001).toFixed(4);
+    var opacity = 0.8001 - (Math.abs(Math.sin(angle / 180 * Math.PI)) * 0.8 + 0.0001).toFixed(4);
     var shadowKeyFrame = (i * 10) + "% { opacity: " + opacity + "; animation-timing-function: linear; }";
     keyframes += shadowKeyFrame;
   }
@@ -44,9 +44,45 @@ function opacityAnimationShadowGradient(card, from, to) {
 
 }
 
-function rotateCard(card, duration, from, to) {
+function rotateCardX(card, duration, from, to) {
   var actualTo = to - 0.1 * Math.sign(to - from);
-  if (from == actualTo)
+  if (Math.abs(from - actualTo) < 1)
+    return;
+  var distance = window.getComputedStyle(card).getPropertyValue("transform-origin").split(" ")[0];
+  var transform = "translateZ(" + distance + ") rotateX(" + actualTo + "deg)";
+  var transition = "transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
+  var shadowAnimation = opacityAnimationShadow(card, from, to) + (duration / 180 * Math.abs(from - to)).toFixed(1) + "ms";
+  var shadowGradientAnimation = opacityAnimationShadowGradient(card, from, to) + (duration / 180 * Math.abs(from - to)).toFixed(1) + "ms";
+
+  var collection = card.parentElement.parentElement;
+  var shadowCard = collection.querySelectorAll('div.shadow-card')[0];
+  var shadowCardGradient = collection.querySelectorAll('div.shadow-card-gradient')[0];
+  var shadow = collection.querySelectorAll('div.shadow')[0];
+  var shadowGradient = collection.querySelectorAll('div.shadow-gradient')[0];
+
+  card.style.transform = "translateZ(" + distance + ") rotateX(" + from + "deg)";
+  shadowCard.style.transform = card.style.transform;
+  shadowCardGradient.style.transform = card.style.transform;
+  shadowCard.style.animation = "";
+  shadowCardGradient.style.animation = "";
+  document.body.offsetTop;
+
+  card.style.transform = transform;
+  card.style.transition = transition;
+  shadowCard.style.transform = transform;
+  shadowCard.style.transition = transition;
+  shadowCard.style.animation = shadowAnimation;
+  shadowCard.style.opacity = 0.8001;
+
+  shadowCardGradient.style.transform = transform;
+  shadowCardGradient.style.transition = transition;
+  shadowCardGradient.style.animation = shadowGradientAnimation;
+  shadowCardGradient.style.opacity = 0;
+}
+
+function rotateCardY(card, duration, from, to) {
+  var actualTo = to - 0.1 * Math.sign(to - from);
+  if (Math.abs(from - actualTo) < 1)
     return;
   var distance = window.getComputedStyle(card).getPropertyValue("transform-origin").split(" ")[0];
   var transform = "translateZ(" + distance + ") rotateY(" + actualTo + "deg)";
@@ -80,18 +116,34 @@ function rotateCard(card, duration, from, to) {
   shadowCardGradient.style.opacity = 0;
 }
 
+function rotateX0(card, duration) {
+  var current = window.getComputedStyle(card).transform;
+  var cosFrom = parseFloat(current.split(',')[5]);
+  var from = (Math.acos(cosFrom) / Math.PI * 180) % 360;
+  console.log(current);
+  console.log(from);
+  rotateCardX(card, duration, from, 0);
+}
+
+function rotateX180(card, duration) {
+  var current = window.getComputedStyle(card).transform;
+  var cosFrom = parseFloat(current.split(',')[5]);
+  var from = (Math.acos(cosFrom) / Math.PI * 180) % 360;
+  console.log(current);
+  console.log(from);
+  rotateCardX(card, duration, from, 180);
+}
+
 function rotateY0(card, duration) {
   var current = window.getComputedStyle(card).transform;
   var cosFrom = parseFloat(current.split(',')[10]);
   var from = (Math.acos(cosFrom) / Math.PI * 180) % 360;
-  rotateCard(card, duration, from, 0);
-  card.setAttribute('rotation', '0');
+  rotateCardY(card, duration, from, 0);
 }
 
 function rotateY180(card, duration) {
   var current = window.getComputedStyle(card).transform;
   var cosFrom = parseFloat(current.split(',')[10]);
   var from = (Math.acos(cosFrom) / Math.PI * 180) % 360;
-  rotateCard(card, duration, from, 180);
-  card.setAttribute('rotation', '180');
+  rotateCardY(card, duration, from, 180);
 }
