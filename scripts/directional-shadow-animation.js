@@ -48,6 +48,8 @@ function rotateCard(card, duration, from, to) {
   if (from == to)
     return;
   var actualTo = to - 0.1 * Math.sign(to - from);
+  if (from == actualTo)
+    return;
   console.log(from + " ====> " + actualTo);
   var distance = window.getComputedStyle(card).getPropertyValue("transform-origin").split(" ")[0];
   var transform = "translateZ(" + distance + ") rotateY(" + actualTo + "deg)";
