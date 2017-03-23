@@ -21,7 +21,16 @@
   -webkit-filter: blur(8px);
 }
 
-.shadow-gradient {
+.shadow-gradient-x {
+  display: block;
+  position: absolute;
+  margin: 5px;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  background-image: -webkit-linear-gradient(bottom, #DCDCDC, #808080);
+}
+
+.shadow-gradient-y {
   display: block;
   position: absolute;
   margin: 5px;
