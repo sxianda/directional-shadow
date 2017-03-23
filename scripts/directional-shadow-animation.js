@@ -45,10 +45,9 @@ function opacityAnimationShadowGradient(card, from, to) {
 }
 
 function rotateCard(card, duration, from, to) {
-  if (from == to)
-    return;
   var actualTo = to - 0.1 * Math.sign(to - from);
-  console.log(from + " ====> " + actualTo);
+  if (from == actualTo)
+    return;
   var distance = window.getComputedStyle(card).getPropertyValue("transform-origin").split(" ")[0];
   var transform = "translateZ(" + distance + ") rotateY(" + actualTo + "deg)";
   var transition = "transform " + duration + "ms cubic-bezier(0.3, 0.6, 0.1, 1.0)";
